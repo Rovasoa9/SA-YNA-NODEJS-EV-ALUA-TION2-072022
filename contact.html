@@ -1,0 +1,117 @@
+<htlm>
+
+	<head>
+		<meta charset='Utf-8'>
+		<title> D- CLIC  </title>
+        <link rel="stylesheet" href="/style.css">
+		<script
+         src="https://code.jquery.com/jquery-3.6.0.js"
+         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+         crossorigin="anonymous"></script>
+	</head>
+    <script>
+		var form =document.getElementById('leform');
+		function handleform(event){event.preventDefault();}
+		form.addEventListener('submit',handleform);
+    
+	function insert_data(){
+    var fname= document.getElementById('fname');
+	var lname= document.getElementById('lname');
+	var avis= document.getElementById('avis');
+	var note= document.getElementById('Note');
+	var formation= document.getElementById('formation');
+
+	var req = new XMLHttpRequest();
+	req.open("POST","/sayna/contact.html");
+	httpr.SetRequestHeader("content-type","application/x-www-form-urlencoded");
+	req.send("fname ="+fname.value+"&lname ="+lname.value+"&avis ="+avis.value+"&Note ="+note.value+"&formation ="+formation.value);
+	httpr.onreadystatechange = funstion()
+	{
+		if(req.readystate==4 && req.status==200){
+        alert(req.responseText);
+	fname.value ="";
+    lname.value="";
+    avis.value ="";
+	note.value="";
+	formation.value="";
+}
+	}
+    return false;
+	}
+
+    </script>
+	<body>
+		
+		<div class ="container"> 
+			<div class ="menu"> 
+	            <ul>
+	            	<li class="logo"> <img src="/image/sayna.jpg"> </li>
+	            	<li><a href = "/sayna/index.html" class="menude">Home</a></li>
+	            	<li><a href = "/sayna/backend.html" class="menude">BackEnd</a></li>
+	            	<li><a href = "/sayna/frontend.html" class="menude">FrontEnd</a></li>
+					<li><a href = "/sayna/marketing.html" class="menude">Marketing Digital</a></li>
+					<li><a href = "/sayna/uxui.html" class="menude">UX/UI</a></li>
+	            	<li><a href = "/sayna/contact.html" class="menude">Contact</a></li>
+	                <li><a href = "/sayna/signup.html" class="signup-btn"> <span> Sign Up </span> </a> </li>
+	            </ul>
+
+			</div>
+
+			<div class = "banner" > 
+
+				<div class="app-text"> 
+						<h1> D-CLIC <br> Venez nous voir </h1>
+						<p>Prenez contact avec nous. </p>
+						<div class="play-btn"> 
+							<div class="play-btn-inner"> 
+								
+							</div>
+						</div>
+				</div>
+
+			    <div class="app-picture-contact" >
+					<img src="/image/image_contact.jpg">
+
+				</div> 
+
+
+				<body>
+					<h2>Notez la formation</h2>
+				
+				<div>
+				  <form onsubmit="return insert_data()">
+					<label for="fname">First Name</label>
+					<input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+				
+					<label for="lname">Last Name</label>
+					<input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+				
+					<label for="avis">Votre avis</label>
+					<input type="text" id="avis" name="avis" placeholder="donnez votre avis sur la formation.." required>
+				
+					<label for="Note">Note</label>
+					<input type="number" id="Note" name="note" min="1" max="5" placeholder="votre note .." required>
+				
+					<label for="formation">Formation</label>
+					<select id="formation" name="formation" required>
+					  <option value="Frontent">Frontend</option>
+					  <option value="Backend">Backend</option>
+					  <option value="UX-UI">Marketing</option>
+					  <option value="UX-UI">UX-UI</option>
+					</select>
+				  
+					<a href = "/sayna/signup.html"><input type="submit" name = "button" value="Submit"></a>
+				  </form>
+				</div>
+				
+				</body>
+				
+
+
+
+			</div>
+		</div>
+
+	</body>
+
+</html>
